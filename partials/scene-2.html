@@ -1,0 +1,140 @@
+<section id="scene-2" class="relative z-10 min-h-screen py-20 px-3 sm:px-6 flex flex-col justify-between overflow-hidden bg-gradient-to-b from-transparent via-rose-100/55 to-pink-50/75">
+    <div class="max-w-6xl mx-auto w-full">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center mb-7">
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-rose-200 text-rose-600 text-xs font-semibold mb-3 shadow-sm">
+            <span class="animate-train">🚂</span>
+            <span>Giao Diện 2 • Chuyến Tàu Kỷ Niệm Lớp Mình</span>
+          </div>
+          <h2 class="font-serif text-2xl sm:text-4xl font-bold text-rose-950 tracking-tight">
+            Hành Trình Thiệp 20/10: <span class="text-aurora font-script text-3xl sm:text-5xl">Anh Thư • Bảo Linh • Trần Lương</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-rose-800/85 mt-2 max-w-xl mx-auto lg:mx-0 leading-relaxed">Lật từng tấm thiệp để đọc thư; đọc xong mới mở được trạm tiếp theo.</p>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-white/90 group max-h-44 sm:max-h-48">
+            <img id="trainBannerStaticImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Chuyến tàu kỷ niệm 20/10" class="w-full h-44 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-rose-950/80 via-rose-950/20 to-transparent flex items-end p-4">
+              <div class="text-white">
+                <span class="text-[10px] uppercase tracking-widest text-rose-200 font-semibold block">Chuyến Tàu Thanh Xuân • 20.10</span>
+                <p class="font-serif font-bold text-sm sm:text-base">Chở Ngàn Yêu Thương Tới 3 Bông Hoa Lớp Mình 🌸</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thanh Các Trạm Dừng Tàu (Mỗi bạn nữ 1 trạm riêng) -->
+      <div class="glass-card rounded-2xl p-3 sm:p-4 mb-6">
+        <div class="flex items-center justify-between gap-2 overflow-x-auto pb-1" id="trainStationTimeline">
+          <!-- Tạo tự động bởi JS -->
+        </div>
+      </div>
+
+      <!-- Thẻ Thiệp 3D Kéo Vuốt & Lật Mặt Sau -->
+      <div class="relative max-w-3xl mx-auto my-2">
+        <div class="flex items-center justify-between text-xs text-rose-700/85 font-medium mb-2.5 px-1">
+          <span class="flex items-center gap-1.5"><span>👆</span><span>Mở thư, đọc xong rồi lật lại để mở trạm tiếp theo</span></span>
+          <span id="storyCardIndexBadge" class="font-bold text-rose-600 bg-white/85 px-2.5 py-0.5 rounded-full border border-rose-200">Trạm 1 / 5</span>
+        </div>
+
+        <div id="storyDragStage" class="perspective-1000 relative h-[440px] sm:h-[465px] w-full select-none">
+          <div id="storyCardInner" class="grab-card w-full h-full transform-style-3d relative rounded-3xl shadow-2xl shadow-rose-300/50">
+
+            <!-- MẶT TRƯỚC THIỆP -->
+            <div id="storyCardFront" class="backface-hidden absolute inset-0 rounded-3xl bg-white border-2 border-rose-200/90 overflow-hidden flex flex-col md:flex-row">
+              <div class="relative md:w-1/2 h-48 sm:h-56 md:h-full overflow-hidden bg-rose-100 flex-shrink-0">
+                <img id="storyFrontImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Kỷ niệm 20/10" class="w-full h-full object-cover pointer-events-none transition-transform duration-500" />
+                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-rose-950/80 backdrop-blur-md text-white text-xs font-semibold flex items-center gap-1.5">
+                  <span id="storyFrontIcon">🌸</span>
+                  <span id="storyFrontStation">Trạm 1 • Nguyễn Anh Thư</span>
+                </div>
+                <div id="storyFrontDate" class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-sm text-rose-900 text-[11px] font-bold shadow">
+                  20/10 Ngọt Ngào
+                </div>
+              </div>
+
+              <div class="p-5 sm:p-7 flex-1 flex flex-col justify-between bg-gradient-to-br from-white via-rose-50/40 to-pink-50/60">
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span id="storyFrontTag" class="text-[11px] font-bold uppercase tracking-wider text-rose-500">Dành Tặng Bạn Nữ Lớp Mình</span>
+                    <button type="button" id="btnHeartStory" class="px-2.5 py-1 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 text-xs font-bold flex items-center gap-1 transition">
+                      <span>❤️</span><span id="storyLikeCount">99</span>
+                    </button>
+                  </div>
+                  <h3 id="storyFrontTitle" class="font-serif text-xl sm:text-2xl font-bold text-rose-950 mb-3 leading-snug">
+                    Nguyễn Anh Thư — Nàng Thơ Dịu Dàng & Rạng Rỡ
+                  </h3>
+                  <blockquote id="storyFrontQuote" class="text-xs sm:text-sm text-rose-800/90 leading-relaxed italic border-l-4 border-rose-400 pl-3 py-1.5 bg-rose-50/60 rounded-r-xl">
+                    "Cảm ơn bạn vì đã luôn mang đến sự ấm áp và nụ cười trong trẻo như nắng sớm tháng Mười."
+                  </blockquote>
+                </div>
+
+                <div class="pt-4 border-t border-rose-100 flex items-center justify-between gap-2 mt-4">
+                  <button type="button" id="btnFlipToBack" class="btn-shimmer w-full py-3 px-4 rounded-xl bg-gradient-to-r from-rose-600 via-pink-500 to-amber-500 text-white font-bold text-xs sm:text-sm shadow-md shadow-rose-300/50 hover:opacity-95 transition flex items-center justify-center gap-2">
+                    <span>💌</span>
+                    <span>Lật Thiệp Xem Thư Tay Bí Mật</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- MẶT SAU THIỆP (BỨC THƯ TAY BÍ MẬT) -->
+            <div id="storyCardBack" class="backface-hidden rotate-y-180 absolute inset-0 rounded-3xl bg-gradient-to-br from-rose-50 via-white to-amber-50/70 border-2 border-amber-300/90 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+              <div>
+                <div class="flex items-center justify-between border-b border-rose-200/70 pb-3 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-rose-600 text-white flex items-center justify-center text-sm shadow">💌</span>
+                    <div>
+                      <span class="text-[10px] font-bold uppercase tracking-wider text-rose-500 block">Bức Thư Tay 20/10</span>
+                      <h4 id="storyBackHeader" class="font-serif font-bold text-sm sm:text-base text-rose-950">Gửi Bạn Nữ Đáng Quý Của Lớp Mình</h4>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold border border-amber-200">Niêm phong sáp 💮</span>
+                </div>
+
+                <p id="storyBackLetter" class="font-script text-xl sm:text-2xl text-rose-950 leading-relaxed whitespace-pre-line">
+                  Nhân ngày Phụ nữ Việt Nam 20/10, chúc bạn luôn giữ mãi nụ cười tỏa nắng trên môi!
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-rose-200/70 flex items-center justify-between gap-3 mt-4">
+                <span id="storyBackSignature" class="font-script text-lg text-rose-600 font-bold">— Tập Thể Nam Sinh Lớp Mình —</span>
+                <button type="button" id="btnFlipToFront" class="py-2 px-4 rounded-xl bg-rose-950 text-white text-xs sm:text-sm font-semibold hover:bg-rose-800 transition flex items-center gap-1.5">
+                  <span>↩️</span><span>Lật Lại Mặt Trước</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 mt-5">
+          <button type="button" id="btnStoryPrev" class="px-4 py-2.5 rounded-xl glass-card hover:bg-white text-rose-800 font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-1.5 transition active:scale-95">
+            <span>⬅️</span><span>Trạm Trước</span>
+          </button>
+          <button type="button" id="btnStoryConfetti" class="px-4 py-2.5 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 font-semibold text-xs sm:text-sm border border-rose-200 flex items-center gap-1.5 transition active:scale-95">
+            <span>🎉</span><span>Tung Hoa Chúc Mừng</span>
+          </button>
+          <button type="button" id="btnStoryNext" class="px-4 py-2.5 rounded-xl glass-card hover:bg-white text-rose-800 font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-1.5 transition active:scale-95">
+            <span>Trạm Tiếp</span><span>➡️</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <button type="button" data-scroll-to="scene-3" class="btn-shimmer inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-rose-900 via-rose-700 to-pink-600 text-white font-bold text-sm sm:text-base shadow-xl shadow-rose-900/25 hover:scale-[1.03] active:scale-[0.98] transition-all">
+          <span>💃</span>
+          <span>Chuyến Trạm Tiếp Theo: Vũ Công 3D Nhảy Múa & Bộ Sưu Tập Ảnh</span>
+          <span>↓</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       GIAO DIỆN 3: BỘ SƯU TẬP ẢNH & NỮ VŨ CÔNG IDOL 3D NHẢY MÚA NHƯ NGƯỜI THẬT
+       ========================================================================= -->

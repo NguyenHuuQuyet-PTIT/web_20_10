@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chỉnh nội dung thiệp (bản riêng)</title>
+  <style>
+    :root{font-family:Inter,system-ui,sans-serif;color:#4a1525;background:#fff5f7}*{box-sizing:border-box}body{margin:0;padding:24px}.wrap{max-width:1180px;margin:auto}.card{background:white;border:1px solid #fbcfe8;border-radius:18px;padding:20px;margin:14px 0;box-shadow:0 8px 28px #8813370c}h1{margin:4px 0 8px;font-family:Georgia,serif}p{line-height:1.55}.muted{color:#7c5963}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}button{border:0;border-radius:10px;padding:11px 15px;font-weight:700;background:#e11d48;color:white;cursor:pointer}button.secondary{background:#fff1f2;color:#9f1239;border:1px solid #fecdd3}textarea,input{font:inherit}textarea{width:100%;min-height:58vh;border:1px solid #f9a8d4;border-radius:12px;padding:14px;color:#3f2630;line-height:1.5;resize:vertical}input[type=text]{width:min(520px,100%);padding:10px;border:1px solid #f9a8d4;border-radius:9px}.upload{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.status{min-height:1.5em;color:#9f1239;font-weight:600}iframe{width:100%;height:78vh;border:1px solid #f9a8d4;border-radius:12px;background:white}.hint{font-size:.92rem;color:#71515c}code{background:#fff1f2;padding:2px 5px;border-radius:4px}@media(max-width:600px){body{padding:12px}.card{padding:14px}textarea{min-height:48vh}}
+    .quick-group{border-top:1px solid #fce7f3;padding:8px 0}.quick-group h3{margin:12px 0;color:#881337}.quick-field{display:block;margin:12px 0}.quick-field span{display:block;font-weight:700;margin-bottom:5px}.quick-field textarea{min-height:68px}.advanced{margin-top:24px;padding:14px;border:1px solid #fce7f3;border-radius:12px}.advanced summary{cursor:pointer;font-weight:700}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Chỉnh nội dung và xem thử</h1>
+      <p class="muted">Trang riêng để bạn chuẩn bị thiệp. Nội dung đang chỉnh chỉ nằm trong trình duyệt này cho đến khi tải file cuối cùng xuống.</p>
+      <div class="actions">
+        <button id="previewButton" type="button">Cập nhật xem trước</button>
+        <button id="exportButton" type="button">Tải data.js bản cuối</button>
+        <button id="resetButton" class="secondary" type="button">Khôi phục dữ liệu ban đầu</button>
+      </div>
+      <p class="status" id="status" role="status"></p>
+      <details>
+        <summary>Thêm ảnh hoặc nhạc từ máy</summary>
+        <p class="hint">Nhập vị trí nội dung cần thay. Ví dụ <code>data.gallery.0.image</code>, <code>data.stories.0.image</code>, <code>assets.BOUQUET</code>, hoặc <code>data.customAudioDataUrl</code>. Ảnh/nhạc được nhúng vào file xuất ra, nên hãy dùng file vừa phải.</p>
+        <div class="upload">
+          <input id="assetPath" type="text" value="data.gallery.0.image" aria-label="Vị trí nội dung">
+          <input id="assetFile" type="file" accept="image/*,audio/*">
+          <button id="importButton" class="secondary" type="button">Đưa file vào nội dung</button>
+        </div>
+      </details>
+    </section>
+    <section class="card">
+      <h2>Dữ liệu lời chúc, trạm, ảnh và nhạc</h2>
+      <p class="hint">Sửa JSON bên dưới. Các trường hồ sơ đầu trang nằm trong <code>profiles</code>; nội dung thiệp nằm trong <code>data</code>. Có thể sửa trực tiếp cả danh sách/đoạn chữ.</p>
+      <div id="quickEditor"></div>
+      <details class="advanced">
+        <summary>Mở dữ liệu nâng cao (JSON)</summary>
+        <p class="hint">Chỉnh cấu trúc mảng hoặc các mục khác. <code>profiles</code> là hồ sơ; <code>data</code> là nội dung thiệp.</p>
+        <textarea id="content" spellcheck="false" aria-label="Nội dung JSON"></textarea>
+      </details>
+    </section>
+    <section class="card">
+      <h2>Xem thử thiệp thật</h2>
+      <iframe id="preview" title="Xem thử thiệp"></iframe>
+    </section>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/editor.js"></script>
+</body>
+</html>

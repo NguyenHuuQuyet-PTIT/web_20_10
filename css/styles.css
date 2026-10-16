@@ -1,0 +1,261 @@
+/* ==========================================================================
+   FILE: css/styles.css
+   MÔ TẢ: Giao diện Luxury Rosé & Pearl Aurora + Hiệu ứng Animation Động Cực Xịn
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 198, 217, 0.75) 0%, transparent 42%),
+    radial-gradient(circle at 88% 22%, rgba(253, 230, 138, 0.45) 0%, transparent 40%),
+    radial-gradient(circle at 50% 60%, rgba(244, 114, 182, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 20% 88%, rgba(251, 113, 133, 0.28) 0%, transparent 48%),
+    linear-gradient(180deg, #FFF7FA 0%, #FFE6EF 48%, #FFF2F7 100%);
+  color: #4A1525;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+  margin: 0;
+}
+
+#appContent {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+input,
+textarea,
+select {
+  max-width: 100%;
+  user-select: text;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
+#floatingAudioPlayer {
+  left: max(0.75rem, env(safe-area-inset-left));
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  max-width: calc(100vw - 1.5rem);
+}
+
+header {
+  padding-top: max(0.625rem, env(safe-area-inset-top));
+}
+
+@media (max-width: 639px) {
+  #storyDragStage {
+    height: clamp(380px, 66svh, 440px);
+  }
+}
+
+@media (max-width: 360px) {
+  #floatingAudioPlayer {
+    gap: 0.5rem;
+    padding-right: 0.65rem;
+  }
+
+  #audioTrackName {
+    max-width: 110px;
+  }
+
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF0F5;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #E11D48, #EC4899, #F59E0B);
+  border-radius: 9999px;
+}
+
+/* Keyframes Animation Động */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-11px) rotate(1.5deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.48), 0 14px 34px -6px rgba(225, 29, 72, 0.38);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(225, 29, 72, 0), 0 22px 48px -4px rgba(225, 29, 72, 0.62);
+  }
+}
+
+@keyframes giftShake {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-10deg) scale(1.08); }
+  40% { transform: rotate(10deg) scale(1.12); }
+  60% { transform: rotate(-7deg) scale(1.08); }
+  80% { transform: rotate(7deg) scale(1.04); }
+}
+
+@keyframes masterGiftFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    filter: drop-shadow(0 20px 30px rgba(225,29,72,0.4));
+  }
+  25% {
+    transform: translateY(-14px) scale(1.06) rotate(-3deg);
+    filter: drop-shadow(0 28px 42px rgba(225,29,72,0.58));
+  }
+  75% {
+    transform: translateY(-7px) scale(1.04) rotate(3deg);
+    filter: drop-shadow(0 24px 36px rgba(217,119,6,0.5));
+  }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes eqBar1 {
+  0%, 100% { height: 6px; }
+  50% { height: 18px; }
+}
+@keyframes eqBar2 {
+  0%, 100% { height: 16px; }
+  33% { height: 6px; }
+  66% { height: 20px; }
+}
+@keyframes eqBar3 {
+  0%, 100% { height: 10px; }
+  40% { height: 20px; }
+  80% { height: 5px; }
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(220%) skewX(-18deg); }
+}
+
+@keyframes trainMove {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  50% { transform: translateX(8px) translateY(-2px); }
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes haloPulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.96); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
+
+.animate-float-slow { animation: floatSlow 3.8s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 2.2s infinite; }
+.animate-gift-shake { animation: giftShake 1.25s ease-in-out infinite; }
+.animate-master-gift { animation: masterGiftFloat 2.8s ease-in-out infinite; }
+.animate-spin-slow { animation: spinSlow 7s linear infinite; }
+.animate-train { animation: trainMove 2.4s ease-in-out infinite; }
+.animate-halo { animation: haloPulse 3.2s ease-in-out infinite; }
+
+.text-aurora {
+  background: linear-gradient(90deg, #E11D48, #DB2777, #D97706, #E11D48);
+  background-size: 260% 260%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientFlow 5s ease infinite;
+}
+
+/* Hiệu ứng Lật Thiệp 3D */
+.perspective-1000 {
+  perspective: 1400px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Kính mờ cao cấp (Luxury Glassmorphism) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 182, 203, 0.85);
+  box-shadow: 0 20px 50px -12px rgba(225, 29, 72, 0.14), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.glass-pill-active {
+  background: linear-gradient(135deg, #E11D48 0%, #EC4899 55%, #F59E0B 100%);
+  color: #FFFFFF;
+  box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.5);
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  animation: shimmerSweep 2.6s infinite;
+}
+
+.grab-card {
+  cursor: grab;
+  touch-action: pan-y;
+}
+.grab-card:active {
+  cursor: grabbing;
+}
+
+@keyframes mascotDance1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  25% { transform: translateY(-12px) rotate(-4deg) scale(1.03, 0.98); }
+  50% { transform: translateY(0px) rotate(0deg) scale(0.98, 1.03); }
+  75% { transform: translateY(-12px) rotate(4deg) scale(1.03, 0.98); }
+}
+@keyframes mascotDance2 {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateX(-10px) translateY(-8px) rotate(-7deg) scale(1.04); }
+  75% { transform: translateX(10px) translateY(-8px) rotate(7deg) scale(1.04); }
+}
+@keyframes mascotDance3 {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(0.96, 1.06) translateY(-18px); }
+}
+@keyframes mascotDance4 {
+  0% { transform: rotateY(0deg) translateY(0px); }
+  50% { transform: rotateY(180deg) translateY(-10px); }
+  100% { transform: rotateY(360deg) translateY(0px); }
+}
+.mascot-mode-1 { animation: mascotDance1 1.5s ease-in-out infinite; }
+.mascot-mode-2 { animation: mascotDance2 1.6s ease-in-out infinite; }
+.mascot-mode-3 { animation: mascotDance3 1.0s ease-in-out infinite; }
+.mascot-mode-4 { animation: mascotDance4 2.2s linear infinite; }
